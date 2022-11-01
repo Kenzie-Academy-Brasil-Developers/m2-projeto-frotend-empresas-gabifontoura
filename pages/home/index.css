@@ -1,0 +1,184 @@
+.company-list{
+    list-style: none;
+    padding: 2rem;
+    gap: 1rem;
+    overflow-x: auto;
+    background-color: var(--grey-1);
+
+}
+
+.company{
+
+    height: 13.25rem;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--color-primary);
+    padding: 1rem;
+
+
+
+}
+.company-name{
+
+    width: 12rem;
+    font-size: var(--font-size-0);
+   
+}
+
+.menu-burger{
+    margin: 0 1rem 0 2rem ;
+}
+
+
+.nav {
+    top:5rem;
+    background-color: var(--white);
+    padding: 1rem 1.5rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+  
+ 
+}
+.false-header{
+    background-color: var(--white);
+    
+ 
+}
+
+.header{
+    padding: 1rem 0 0 1rem;
+}
+
+.desktop{
+    width: 100%;
+    margin: 0 0 0 1rem;
+}
+.select{
+    width: 96%;
+    background-color: var(--color-primary);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-2);
+   
+}
+
+.select:focus{
+    outline: none;
+}
+
+
+
+header{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    align-items: center;
+    padding: 0.25rem 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 800px){
+    .menu{
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .bg-photo{
+        display: none;
+    }
+    .home{
+        width: 100%;
+    }
+    .company-description{
+        padding-top: 4rem;
+    }
+    .company{
+
+        height: 13.25rem;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--color-primary);
+        padding: 1rem;
+        margin-left: 0.5rem;
+    
+    
+    }
+}
+
+
+@media (min-width: 799px){
+      
+      
+    header{
+        width: 100vw;
+        height: 5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 2rem 8rem;
+        align-items: center;
+      
+    }
+    
+
+    .menu-burger{
+        display: none;
+    }
+
+    .header{
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .menu{
+        display:flex;
+        gap: 1rem;
+        visibility: visible;
+  
+    }
+
+
+    .bg-photo {
+        width: 100%;
+    
+
+    }
+
+    .home{
+        display: flex;
+        justify-self: end;
+        width: 50%;
+    }
+    
+    .desktop{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 8rem;
+   
+    }
+
+    .select{
+        width: 34rem;
+    }
+    
+    .company-list{
+        width:34rem;
+        flex-direction: column;
+  
+    }
+
+    .company-name{
+        padding-bottom: 0;
+    }
+
+    .company-description{
+        padding-top: 1rem;
+    }
+
+
+    .company{
+        height: max-content;
+        gap: 1rem;
+    }
+
+
+}

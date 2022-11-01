@@ -1,0 +1,30 @@
+.flex{
+    display: flex;
+}
+
+.display-none{
+    display: none;
+}
+.end{
+    justify-content: end;
+}
+.absolute{
+    position: absolute;
+}
+.column{
+    flex-direction: column;
+}
+
+.between{
+    justify-content: space-between;
+}
+
+.gap-05rem{
+    gap: 0.5rem;
+}
+.gap-1rem{
+    gap: 1rem;
+}
+
+
+
