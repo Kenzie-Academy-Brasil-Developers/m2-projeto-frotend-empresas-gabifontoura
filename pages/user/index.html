@@ -9,14 +9,56 @@
     <link rel="stylesheet" href="../../styles/buttons.css">
     <link rel="stylesheet" href="../../styles/fonts.css">
     <link rel="stylesheet" href="../../styles/displays.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
+
+
 
 
     <link rel="stylesheet" href="./index.css">
 
 
-    <title>HomePage</title>
+    <title> UserPage</title>
 </head>
 <body>
+    <main class="flex column container">
+
+        <header class="flex between">
+
+            <div class="header flex between">
+
+                <section class="logo flex gap-1rem">
+                    <div class="logo-icon"></div>
+                    <h1><img src="../../assets/Kenzie Empresas.svg" alt="Kenzie Empresas"></h1>
+                </section>
+    
+                <button id="open-menu" class="menu-burger clean-btn">
+                    <img class="burger" src="../../assets/burger_icon.svg" alt="menu">
+                </button>
+
+                <nav class="menu ">
+                    <button class="btn-2 btn-outline">Logout</button>
+                </nav>
+            </div>
+            
+        </header>
+
+        <section class="user-container flex column gap-1rem">
+            <div class="flex between">
+                <h1>Username</h1>
+                <button class="clean-btn"><img src="../../assets/pencil.svg" alt="Editar"></button>
+            </div>
+            <div class="flex gap-8rem">
+                <p class="text-2">Email: meuemail@mail.com</p>
+                <p class="text-2">Pleno</p>
+                <p class="text-2">HomeOffice</p>
+            </div>
+        </section>
+
+        <section class="not-yet flex">
+            <p class="title">Você ainda não foi contratado</p>
+        </section>
+    </main>
     
 </body>
 </html>

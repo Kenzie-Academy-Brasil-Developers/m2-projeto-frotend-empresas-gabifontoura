@@ -1,0 +1,16 @@
+.user-container {
+    margin: 2rem 8rem 0 10rem; 
+    padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    justify-content: center;
+
+}
+
+.not-yet{
+    background-color: var(--grey-1);
+    margin: 2rem 8rem 0 10rem; 
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+
+}

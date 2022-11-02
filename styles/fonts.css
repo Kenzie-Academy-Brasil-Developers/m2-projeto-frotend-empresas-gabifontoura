@@ -1,0 +1,16 @@
+.title{
+    font-size: var(--font-size-0-1);
+    font-weight: 700;
+
+}
+
+.text-1-bold{
+    font-size: var(--font-size-0);
+    font-weight: 700;
+}
+
+.text-2{
+    font-size:var(--font-size-1) ;
+    font-weight: 400;
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/fonts.css">
+    <link rel="stylesheet" href="../../styles/displays.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
+
+
+
+    <link rel="stylesheet" href="index.css">
+
+    <title>Cadastro</title>
+</head>
+<body>
+    <main class="flex column container">
+
+        <header class="flex between">
+
+            <div class="header flex between">
+
+                <section class="logo flex gap-1rem">
+                    <div class="logo-icon"></div>
+                    <img src="../../assets/Kenzie Empresas.svg" alt="Kenzie Empresas">
+                </section>
+    
+                <button id="open-menu" class="menu-burger clean-btn">
+                    <img class="burger" src="../../assets/burger_icon.svg" alt="menu">
+                </button>
+
+                <nav class="menu ">
+                    <button class="btn-2 btn-outline">Home</button>
+                    <button class="btn-1 btn-primary">Login</button>
+                </nav>
+            </div>
+            
+        </header>
+
+        <section class="content">
+
+            <form class="flex column gap-1rem">
+                <h1>Cadastre-se</h1>
+                <input type="text" placeholder="Seu nome" class="input-default">
+                <input type="email" placeholder="Seu e-mail" class="input-default">
+                <input type="password" placeholder="Sua senha" class="input-default">
+                <select class="select-form"  name="nivel" id="nivel">
+                    <option class="select-form" value="nivel-pro">Nível Profissional</option>
+                    <option class="select-form" value="nivel-junior">Júnior</option>
+                    <option class="select-form" value="nivel-pleno">Pleno</option>
+                    <option class="select-form" value="nivel-senior">Sênior</option>
+                </select>
+                <button class="btn-primary-max">Cadastre-se</button>
+                <button class="btn-outline-max">Retornar</button>
+    
+            </form>
+        </section>
+
+        </main>
+
+    <script type="module" src="index.js"></script>
+    
+</body>
+</html>

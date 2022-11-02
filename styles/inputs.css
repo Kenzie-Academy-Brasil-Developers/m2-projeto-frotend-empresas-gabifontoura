@@ -1,0 +1,35 @@
+.input-default{
+    height: 3.25rem;
+    color: var(--grey-1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-1);
+    padding: 1rem;
+    
+}
+
+.select-form{
+    padding: 1rem;
+    height: 3.25rem;
+    color:  rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-1);
+    
+}
+
+.select-form:focus{
+    outline: none;
+}
+
+
+.select-admin{
+    width: max-content;
+    padding: 0 1rem;
+    height: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-1);
+    border-radius: var(--radius-1);
+}
+
+.select-admin:focus{
+    outline: none;
+}
