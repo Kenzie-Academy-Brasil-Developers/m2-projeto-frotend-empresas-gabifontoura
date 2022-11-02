@@ -27,7 +27,7 @@
     width: max-content;
     height: 2rem;
     padding: 0.5rem 0.75rem;
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
     border-radius: var(--radius-1);
 }
 
