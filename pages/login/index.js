@@ -1,5 +1,7 @@
 import { createMenuBurger} from "../../scripts/header.js"
+import { login } from "../../scripts/requests.js"
 
+///////////////////HEADER
 
 function btnsMenuListener (){
     const btn2 = document.querySelector(".btn-2")
@@ -48,3 +50,31 @@ function btnsBurger (){
 }
 
 btnsBurger()
+
+/////////////////////////////
+
+
+const eventLogin = () => {
+    
+    const form = document.querySelector("form")
+    
+    const elements = [...form.elements]
+
+    form.addEventListener('submit', async (event) => {
+
+        event.preventDefault()
+
+        const body = {}
+
+        elements.forEach((element)=> {
+            if (element.tagName == "INPUT" && element.value !== ""){
+                body[element.id] = element.value
+            }
+        })
+
+        await login(body)
+
+    })
+}
+
+eventLogin()

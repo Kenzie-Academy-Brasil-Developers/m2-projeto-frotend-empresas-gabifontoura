@@ -1,4 +1,5 @@
 import { createMenuBurger} from "../../scripts/header.js"
+import { register} from "../../scripts/requests.js"
 
 
 
@@ -51,3 +52,27 @@ function btnsBurger (){
 }
 
 btnsBurger()
+
+
+const eventRegister = () => {
+    const form = document.querySelector("form")
+   
+    const elements = [...form.elements]
+   
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+
+        const body = {}
+
+        elements.forEach((element)=> {
+            if (element.tagName == "INPUT" && element.value !== ""){
+                body[element.id] = element.value
+            }
+        })
+
+        await register(body)
+
+    })
+}
+
+eventRegister()

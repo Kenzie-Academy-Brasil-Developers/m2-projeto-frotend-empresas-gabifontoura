@@ -111,7 +111,7 @@ async function renderAllSectorsSelect() {
     const sectorsList = await getAllSectors()
 
 
-    const select = document.querySelector(".select")
+    const select = document.querySelector(".select-home")
 
     sectorsList.forEach((sectorName) => {
 
@@ -134,7 +134,7 @@ renderAllSectorsSelect()
 
 async function filterSelect() {
 
-    const select = document.querySelector(".select")
+    const select = document.querySelector(".select-home")
     const companiesList = await getAllCompanies()
     
     

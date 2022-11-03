@@ -22,7 +22,7 @@ function createMenuBurger (){
         iconlogo.classList = 'logo-icon'
         btnburger.classList = 'menu-burger clean-btn'
         iconburger.classList ='burger'
-        bgmodal.classList = 'nav absolute'
+        bgmodal.classList = 'nav-mobile absolute'
         nav.classList = 'flex gap-05rem '
         btn2.classList = 'btn-2 btn-outline'
         btn1.classList = 'btn-1 btn-primary'
