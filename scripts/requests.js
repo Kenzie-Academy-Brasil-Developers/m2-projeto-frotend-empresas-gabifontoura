@@ -1,0 +1,321 @@
+import { getLocalStorageToken } from "./localStorage.js"
+
+const baseUrl = "http://localhost:6278"
+
+
+async function validate (token){
+
+        const response = await fetch (baseUrl + "/auth/validate_user", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+    
+        })
+ 
+        const data = await response.json()
+
+        if(response.ok){
+            return data.is_admin
+        }
+
+        
+}
+
+
+async function getAllCompanies() {
+
+    
+    try{
+        const request = await fetch (baseUrl + "/companies",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getAllSectors() {
+
+    
+    try{
+        const request = await fetch (baseUrl + "/sectors",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+             
+            }
+        })
+
+        const response = await request.json()
+ 
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+async function getCompaniesPerSector(sector) {
+
+    
+    try{
+        const request = await fetch (baseUrl + "/companies" + `/${sector}` , {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+
+        const response = await request.json()
+  
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+
+async function login(body) {
+    
+    try {
+        
+
+        const request = await fetch (baseUrl + "/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+
+        
+        
+        if (request.ok) {
+            
+            const response = await request.json()
+            console.log(response)
+           
+
+            localStorage.setItem("@KenzieEmpresas:token", response.token)  
+
+            const isAdmin = await validate(response.token)
+
+            if(isAdmin){
+
+                window.location.replace("/pages/admin/index.html");
+            }
+            else{
+                window.location.replace("/pages/user/index.html");
+
+            }
+
+           
+
+        } else {
+        
+            const response = await request.json()
+            
+            console.log(response.error)
+        }
+
+        
+
+
+    } catch (err) {
+
+        const response = await request.json()
+
+        console.log(response.error)
+
+
+    }
+}
+
+async function register(body) {
+
+    try {
+        const request = await fetch(baseUrl + "/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body),
+        })
+
+
+        if (request.ok) {
+
+            
+            setTimeout(() => {
+                window.location.replace("/pages/login/index.html")
+            }, 1000)
+
+        } else {
+            const response = await request.json()
+            
+            console.log(response.error)
+
+        }
+
+
+    } catch (err) {
+        const response = await request.json()
+            
+        console.log(response.error)
+     
+    }
+
+}
+
+
+
+async function getAllDepts(token){
+    try{
+        const request = await fetch (baseUrl + "/departments",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getAllUsers(token){
+    try{
+        const request = await fetch (baseUrl + "/users",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getDeptsPerCompany(token,company_uuid) {
+    try{
+        const request = await fetch (baseUrl + "/departments" + `/${company_uuid}` ,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+        console.log(response)
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function createDepartment(body) {
+
+    const token = getLocalStorageToken();
+  
+    console.log(body)
+    try {
+      const request = await fetch(baseUrl + "/departments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
+      const response = await request.json();
+      console.log(response)
+  
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+async function getInfosLoggedUser (token){
+
+       
+    try{
+        const request = await fetch (baseUrl + "/users/profile",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        console.log(response)
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export{
+    getAllCompanies,
+    getAllSectors,
+    getCompaniesPerSector,
+    login,
+    register,
+    validate,
+    getAllDepts,
+    getAllUsers,
+    createDepartment,
+    getDeptsPerCompany,
+    getInfosLoggedUser,
+}

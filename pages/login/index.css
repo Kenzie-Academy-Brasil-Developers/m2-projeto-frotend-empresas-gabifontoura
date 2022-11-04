@@ -1,0 +1,47 @@
+
+
+@media (min-width: 799px){
+    
+    .content{
+        background-image: url("../../assets/fullbgphoto.svg");
+        width: 100vw;
+        height: 100vh;
+        align-content: center;
+
+
+    }
+
+    form{
+    
+        width: 30rem ;
+        background-color: var(--grey-1);
+        padding: 3rem;
+        margin: 8rem 32rem;
+    
+    }
+}
+
+@media (max-width: 800px){
+    
+    body{
+
+        overflow-x: hidden;
+    }
+    .content{
+        width: max-content;
+        background-image: url("../../assets/fullbgphoto.svg");
+    }
+    
+    form{
+        
+        margin: 2rem 0;
+        background-color: var(--grey-1);
+        padding: 2rem;
+        max-width: 320px;
+        
+    }
+}
+
+
+
+ 
