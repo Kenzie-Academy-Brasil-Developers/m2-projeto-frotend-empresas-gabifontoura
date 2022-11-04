@@ -5,12 +5,12 @@ import { getAllDepts } from "../../scripts/requests.js"
 import { getAllCompanies } from "../../scripts/requests.js"
 import { renderModalCreateDep } from "../../scripts/modalCreateDep.js"
 import { authenticationAdmin } from "../../scripts/authentication.js"
-
+import { renderModalUpdateDep} from "../../scripts/modalUptadeDep.js"
+import { renderModalDepDetails} from "../../scripts/modalEye.js"
 
 logOut()
 await authenticationAdmin()
 
-// selectCompaniesFilterDepts()
 
 
 
@@ -19,10 +19,11 @@ function btnsListener() {
     const btnCreate = document.querySelector("#btn-create")
 
     btnCreate.addEventListener('click', () => {
-        console.log("hi")
       
         renderModalCreateDep()
     })
+
+
 }
 
 
@@ -66,6 +67,18 @@ async function createCardDepts(element) {
     h3name.innerText = element.name
     h4description.innerText = element.description
     h5companyName.innerText = element.companies.name
+
+    btnEye.addEventListener('click', () => {
+        console.log(element.companies.name)
+        renderModalDepDetails(element)
+    })
+    btnPencil.addEventListener('click', () => {
+       
+        renderModalUpdateDep(element)
+    })
+    // btnTrash.addEventListener('click', () => {
+        
+    // })
 
     btnEye.append(iconEye)
     btnPencil.append(iconPencil)
@@ -114,7 +127,7 @@ async function createCardUsers(element) {
     const li = document.createElement("li")
     const h3name = document.createElement("h3")
     const h4description = document.createElement("h4")
-    // const h5companyName = document.createElement("h5")
+    const h5companyName = document.createElement("h5")
 
     const div = document.createElement("div")
 
@@ -127,7 +140,7 @@ async function createCardUsers(element) {
     li.classList = 'card flex column gap-05rem'
     h3name.classList = 'text-1-bold'
     h4description.classList = 'text-2'
-    // h5companyName.classList = 'text-2'
+    h5companyName.classList = 'text-2'
 
     div.classList = 'icons flex'
 
@@ -139,13 +152,13 @@ async function createCardUsers(element) {
 
     h3name.innerText = element.username
     h4description.innerText = element.professional_level
-    // h5companyName.innerText = element.companies.name
+    h5companyName.innerText = element.kind_of_work
 
 
     btnPencil.append(iconPencil)
     btnTrash.append(iconTrash)
     div.append(btnPencil, btnTrash)
-    li.append(h3name, h4description, div)
+    li.append(h3name, h4description, h5companyName, div)
     ul.append(li)
 }
 
@@ -154,10 +167,8 @@ async function createCardUsers(element) {
 
 async function renderCardsUsers() {
 
-    const token = getLocalStorageToken()
 
-
-    const users = await getAllUsers(token)
+    const users = await getAllUsers()
 
 
     users.forEach(element => {
@@ -194,6 +205,66 @@ async function renderOptionsSelectAdmin() {
 }
 
 renderOptionsSelectAdmin()
+
+
+
+
+
+
+
+
+
+
+
+
+
+// async function selectCompaniesFilterDepts(){
+    
+//     const departmentsList = await getAllDepts()
+//     const token = getLocalStorageToken()
+
+//     const select = document.querySelector(".select-companies-admin")
+
+
+//     select.addEventListener('change', () => {
+        
+//     const ul = document.querySelector(".card-list")
+
+//     ul.innerText = ""
+
+//     if(select.value == 'Selecionar Empresa'){
+
+//             departmentsList.forEach((element) => {
+        
+//             createCardDepts(element)
+
+//         })
+//     }
+
+//     else{
+
+//         getDeptsPerCompany(token,select.id)
+        
+//     }
+    
+    
+// })
+
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,10 +1,10 @@
-import { createDepartment, getAllCompanies, getAllDepts } from "./requests.js"
+import { createDepartment, getAllCompanies } from "./requests.js"
 import { renderCardsDepts } from "../pages/admin/index.js"
-import { getLocalStorageToken} from "./localStorage.js"
 
 
 
-function modalCreateDepartament() {
+
+function modalCreateDepartment() {
 
 
     const bgmodal = document.createElement("section")
@@ -49,6 +49,7 @@ function modalCreateDepartament() {
     renderCompaniesSelectModal()
 
     form.addEventListener('submit', async (event) => {
+        
         event.preventDefault()
 
         const inputs = [...event.target]
@@ -111,7 +112,7 @@ function renderModalCreateDep() {
 
     const mainContainer = document.querySelector(".container")
 
-    const modal = modalCreateDepartament()
+    const modal = modalCreateDepartment()
     mainContainer.append(modal)
 }
 
@@ -119,47 +120,7 @@ function renderModalCreateDep() {
 
 
 
-
-
-
-
-// async function selectCompaniesFilterDepts(){
-    
-//     const departmentsList = await getAllDepts()
-//     const token = getLocalStorageToken()
-
-//     const select = document.querySelector(".select-companies-admin")
-
-
-//     select.addEventListener('change', () => {
-        
-//     const ul = document.querySelector(".card-list")
-
-//     ul.innerText = ""
-
-//     if(select.value == 'Selecionar Empresa'){
-
-//             departmentsList.forEach((element) => {
-        
-//             createCardDepts(element)
-
-//         })
-//     }
-
-//     else{
-
-//         getDeptsPerCompany(token,select.id)
-        
-//     }
-    
-    
-// })
-
-
-
-// }
-
 export {
     renderModalCreateDep,
-    selectCompaniesFilterDepts,
+  
 }

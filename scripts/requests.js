@@ -109,7 +109,6 @@ async function login(body) {
         if (request.ok) {
             
             const response = await request.json()
-            console.log(response)
            
 
             localStorage.setItem("@KenzieEmpresas:token", response.token)  
@@ -185,6 +184,7 @@ async function register(body) {
 
 
 
+
 async function getAllDepts(token){
     try{
         const request = await fetch (baseUrl + "/departments",{
@@ -205,7 +205,10 @@ async function getAllDepts(token){
 
 }
 
-async function getAllUsers(token){
+async function getAllUsers(){
+
+    const token = getLocalStorageToken()
+
     try{
         const request = await fetch (baseUrl + "/users",{
             method: "GET",
@@ -224,6 +227,81 @@ async function getAllUsers(token){
     }
 
 }
+
+async function getUsersOutOfWork(){
+
+    
+    const token = getLocalStorageToken();
+
+
+    try{
+        const request = await fetch (baseUrl + "/admin/out_of_work",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+async function hireUser(body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments/hire/", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+  
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  
+async function dismissUser(idUser) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments/dismiss/" + idUser , {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 async function getDeptsPerCompany(token,company_uuid) {
     try{
@@ -261,7 +339,6 @@ async function createDepartment(body) {
         body: JSON.stringify(body),
       });
       const response = await request.json();
-      console.log(response)
   
       return response;
 
@@ -270,11 +347,62 @@ async function createDepartment(body) {
     }
   }
 
+
+  async function updateDepartment(uuid,body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments" + `/${uuid}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
 async function getInfosLoggedUser (token){
 
        
     try{
         const request = await fetch (baseUrl + "/users/profile",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        console.log(response)
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getCoworkers (){
+
+    const token = getLocalStorageToken();
+
+       
+    try{
+        const request = await fetch (baseUrl + "/users/departments/coworkers",{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -313,9 +441,13 @@ export{
     login,
     register,
     validate,
-    getAllDepts,
     getAllUsers,
+    getUsersOutOfWork,
+    getAllDepts,
     createDepartment,
+    updateDepartment,
     getDeptsPerCompany,
     getInfosLoggedUser,
+    hireUser,
+    dismissUser,
 }

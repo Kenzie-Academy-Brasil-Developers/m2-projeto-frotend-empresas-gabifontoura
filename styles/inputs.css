@@ -11,6 +11,21 @@
 
 }
 
+.input-textarea{
+    height: 7rem;
+    text-decoration-color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-1);
+    padding: 1rem;
+    font-family: "Inter",sans-serif;
+    resize: none;
+}
+
+.input-textarea:focus{
+    outline: 1px solid var(--color-primary);
+
+}
+
 .select-home{
     width: 96%;
     background-color: var(--color-primary);
@@ -40,6 +55,18 @@
     outline: none;
 }
 
+.select-form-users{
+    padding: 1rem;
+    height: 3.25rem;
+    color:  rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: var(--font-size-1);
+    width: 27rem;
+}
+
+.select-form-users:focus{
+    outline: none;
+}
 
 .select-admin{
     width: max-content;
