@@ -1,7 +1,6 @@
 import { createMenuBurger} from "../../scripts/header.js"
 import { login } from "../../scripts/requests.js"
 
-///////////////////HEADER
 
 function btnsMenuListener (){
     const btn2 = document.querySelector(".btn-2")
@@ -51,11 +50,25 @@ function btnsBurger (){
 
 btnsBurger()
 
-/////////////////////////////
+
+
+
+function btnRegister (){
+
+    const btn = document.querySelector(".register")
+
+    btn.addEventListener('click' , () => {
+        window.location.replace("/pages/register/index.html")
+    })
+}
+
+btnRegister()
+
+
 
 
 const eventLogin = () => {
-    
+
     const form = document.querySelector("form")
     
     const elements = [...form.elements]
@@ -78,3 +91,4 @@ const eventLogin = () => {
 }
 
 eventLogin()
+

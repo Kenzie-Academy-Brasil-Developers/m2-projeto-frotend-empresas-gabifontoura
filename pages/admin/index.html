@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../../styles/displays.css">
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/inputs.css">
+    <link rel="stylesheet" href="../../styles/modal.css">
+
 
 
 
@@ -21,7 +23,7 @@
     <title>AdminPage</title>
 </head>
 <body>
-    <main class="flex column ">
+    <main class="flex column container">
 
         <header class="flex between">
 
@@ -49,15 +51,14 @@
             <section class="departaments flex column gap-1rem">
             <nav class="flex between align-center">
                 <h2>Departamentos</h2>
-                <select class="select-admin" name="select-company" id="select-company">
-                    <option class="select-admin" value="select-company" >Selecionar Empresa</option>
-                    <option  class="select-admin"value="">Selecionar Empresa</option>
+                <select class="select-admin select-companies-admin" name="select-company" id="select-company">
+                    <option class="select-admin select-companies-admin" value="Selecionar Empresa" >Selecionar Empresa</option>
 
                 </select>
-                <button class="btn-primary flex gap-1rem align-center"><img src="../../assets/plus_white.svg" alt="Criar"> Criar</button>
+                <button id="btn-create" class="btn-primary flex gap-1rem align-center"><img src="../../assets/plus_white.svg" alt="Criar"> Criar</button>
             </nav>
             <ul class="card-list flex wrap gap-2rem">
-                <li class="card flex column gap-05rem">
+                <!-- <li class="card flex column gap-05rem">
                     <h3 class="text-1-bold">Department Name</h3>
                     <h4 class="text-2">Department Description</h4>
                     <h5 class="text-2">Company Name</h5>
@@ -72,15 +73,15 @@
                             <img src="../../assets/trash.svg" alt="">
                         </button>
                     </div>
-                </li>
+                </li> -->
               
             </ul>
         </section>
 
         <section class="users flex column gap-1rem">
             <h2 class="txt-align-center">Usuários cadastrados</h2>
-            <ul class="card-list flex wrap gap-2rem">
-                <li class="card flex column gap-05rem">
+            <ul class="users-list card-list flex wrap gap-2rem">
+                <!-- <li class="card flex column gap-05rem">
                     <h3 class="text-1-bold">Username</h3>
                     <h4 class="text-2">Nivel Profissional</h4>
                     <h5 class="text-2">Company Name</h5>
@@ -93,7 +94,7 @@
                             <img src="../../assets/trash.svg" alt="">
                         </button>
                     </div>
-                </li>
+                </li> -->
       
             </ul>
         </section>

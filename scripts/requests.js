@@ -1,6 +1,27 @@
-
+import { getLocalStorageToken } from "./localStorage.js"
 
 const baseUrl = "http://localhost:6278"
+
+
+async function validate (token){
+
+        const response = await fetch (baseUrl + "/auth/validate_user", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+    
+        })
+ 
+        const data = await response.json()
+
+        if(response.ok){
+            return data.is_admin
+        }
+
+        
+}
 
 
 async function getAllCompanies() {
@@ -88,11 +109,24 @@ async function login(body) {
         if (request.ok) {
             
             const response = await request.json()
+            console.log(response)
+           
 
-            localStorage.setItem("@KenzieEmpresas:token", JSON.stringify(response))
-            
-            admAuth(JSON.parse(localStorage.getItem("@KenzieEmpresas:token")))
-          
+            localStorage.setItem("@KenzieEmpresas:token", response.token)  
+
+            const isAdmin = await validate(response.token)
+
+            if(isAdmin){
+
+                window.location.replace("/pages/admin/index.html");
+            }
+            else{
+                window.location.replace("/pages/user/index.html");
+
+            }
+
+           
+
         } else {
         
             const response = await request.json()
@@ -150,39 +184,114 @@ async function register(body) {
 }
 
 
-async function admAuth(token){
 
-
-        const request = await fetch (baseUrl + "/auth/validate_user", {
+async function getAllDepts(token){
+    try{
+        const request = await fetch (baseUrl + "/departments",{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
-            },
-    
-        })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                console.log(res.json().then((response) => response.error));
-          }
+            }
         })
 
-        .then((res) => {
-          if (res) {
-            localStorage.setItem("@KenzieEmpresas:tipoUsuario", "admin");
-            window.location.replace("/pages/admin/index.html");
-        } else {
-            localStorage.setItem("@KenzieEmpresas:tipoUsuario", "users");
-            window.location.replace("/pages/user/index.html");
-        }
-    });
+        const response = await request.json()
 
-    
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
 }
 
+async function getAllUsers(token){
+    try{
+        const request = await fetch (baseUrl + "/users",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
 
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getDeptsPerCompany(token,company_uuid) {
+    try{
+        const request = await fetch (baseUrl + "/departments" + `/${company_uuid}` ,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+        console.log(response)
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function createDepartment(body) {
+
+    const token = getLocalStorageToken();
+  
+    console.log(body)
+    try {
+      const request = await fetch(baseUrl + "/departments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
+      const response = await request.json();
+      console.log(response)
+  
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+async function getInfosLoggedUser (token){
+
+       
+    try{
+        const request = await fetch (baseUrl + "/users/profile",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        console.log(response)
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
 
 
 
@@ -202,5 +311,11 @@ export{
     getAllSectors,
     getCompaniesPerSector,
     login,
-    register
+    register,
+    validate,
+    getAllDepts,
+    getAllUsers,
+    createDepartment,
+    getDeptsPerCompany,
+    getInfosLoggedUser,
 }

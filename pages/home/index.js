@@ -5,7 +5,6 @@ import { getAllSectors } from "../../scripts/requests.js"
 
 
 
-///HEADER
 
 function btnsMenuListener() {
     const btn2 = document.querySelector(".btn-2")
@@ -54,7 +53,7 @@ function btnsBurger() {
 
 btnsBurger()
 
-///////////
+
 
 
 

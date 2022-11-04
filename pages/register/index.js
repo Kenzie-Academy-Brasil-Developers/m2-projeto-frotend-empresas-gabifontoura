@@ -23,6 +23,8 @@ btnsMenuListener()
 
 
 
+
+
 function btnsBurger (){
 
     const btnBurger = document.querySelector("#open-menu")
@@ -48,10 +50,37 @@ function btnsBurger (){
             
     })
     
-
+    
 }
 
 btnsBurger()
+
+
+
+
+
+
+
+
+
+
+function btnReturnToLogin (){
+
+    const btn = document.querySelector(".return")
+
+    btn.addEventListener('click' , () => {
+        window.location.replace("/pages/login/index.html")
+    })
+}
+
+btnReturnToLogin()
+
+
+
+
+
+
+
 
 
 const eventRegister = () => {
