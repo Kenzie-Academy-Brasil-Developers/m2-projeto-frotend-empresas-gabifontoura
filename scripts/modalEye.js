@@ -119,7 +119,7 @@ async function renderUsersSelectModalEye() {
 
 function hire(id, select) {
 
-    console.log(select.options[select.selectedIndex].id)
+    // console.log(select.options[select.selectedIndex].id)
 
     const newuser = {
         user_uuid: select.options[select.selectedIndex].id,

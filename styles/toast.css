@@ -1,0 +1,37 @@
+.toast-container{
+
+    background-color: var(--white);
+    border: 1px solid var(--color-success);
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    padding: 10px;
+    animation: toastIt 4000ms ease-in forwards;
+
+}
+
+.toast-container-alert{
+    background-color: var(--white);
+    border: 1px solid var(--color-alert);
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    padding: 10px;
+    animation: toastIt 4000ms ease-in forwards;
+}
+
+.icon{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+@keyframes toastIt {
+    0%   {right: 30px; top:-100px}
+    25%  {right: 30px; top:25px}
+    50%  {right: 30px; top:25px}
+    100% {right: 30px; top:-100px}
+}

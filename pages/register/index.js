@@ -87,18 +87,24 @@ const eventRegister = () => {
     const form = document.querySelector("form")
    
     const elements = [...form.elements]
+
    
     form.addEventListener('submit', async (event) => {
         event.preventDefault()
 
         const body = {}
-
-        elements.forEach((element)=> {
-            if (element.tagName == "INPUT" && element.value !== ""){
-                body[element.id] = element.value
+        console.log(elements)
+        
+    
+        
+        elements.forEach(({name, value}) => {
+          
+            if(name && value !== ""){
+                body[name] = value
             }
         })
-
+        
+        console.log(body)
         await register(body)
 
     })
