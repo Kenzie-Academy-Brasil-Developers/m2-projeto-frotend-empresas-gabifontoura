@@ -109,7 +109,6 @@ async function login(body) {
         if (request.ok) {
             
             const response = await request.json()
-            console.log(response)
            
 
             localStorage.setItem("@KenzieEmpresas:token", response.token)  
@@ -185,7 +184,11 @@ async function register(body) {
 
 
 
-async function getAllDepts(token){
+
+async function getAllDepts(){
+
+    const token = getLocalStorageToken();
+
     try{
         const request = await fetch (baseUrl + "/departments",{
             method: "GET",
@@ -205,7 +208,10 @@ async function getAllDepts(token){
 
 }
 
-async function getAllUsers(token){
+async function getAllUsers(){
+
+    const token = getLocalStorageToken()
+
     try{
         const request = await fetch (baseUrl + "/users",{
             method: "GET",
@@ -225,9 +231,14 @@ async function getAllUsers(token){
 
 }
 
-async function getDeptsPerCompany(token,company_uuid) {
+async function getUsersOutOfWork(){
+
+    
+    const token = getLocalStorageToken();
+
+
     try{
-        const request = await fetch (baseUrl + "/departments" + `/${company_uuid}` ,{
+        const request = await fetch (baseUrl + "/admin/out_of_work",{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -236,8 +247,80 @@ async function getDeptsPerCompany(token,company_uuid) {
         })
 
         const response = await request.json()
-        console.log(response)
 
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+
+async function hireUser(body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments/hire/", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+  
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  
+async function dismissUser(idUser) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments/dismiss/" + idUser , {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+async function getDeptsPerCompany(company_id) {
+
+    const token = getLocalStorageToken();
+
+    try{
+        const request = await fetch (baseUrl + "/departments/" + company_id,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+       
         return response
 
     }catch(err){
@@ -261,7 +344,6 @@ async function createDepartment(body) {
         body: JSON.stringify(body),
       });
       const response = await request.json();
-      console.log(response)
   
       return response;
 
@@ -270,11 +352,86 @@ async function createDepartment(body) {
     }
   }
 
-async function getInfosLoggedUser (token){
 
+  async function updateDepartment(id,body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments" + `/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function deleteDepartment(id) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/departments/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+async function getInfosLoggedUser (){
+
+    const token = getLocalStorageToken();
        
     try{
         const request = await fetch (baseUrl + "/users/profile",{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
+        const response = await request.json()
+
+        return response
+
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+async function getCoworkers (){
+
+    const token = getLocalStorageToken();
+
+       
+    try{
+        const request = await fetch (baseUrl + "/users/departments/coworkers",{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -313,9 +470,14 @@ export{
     login,
     register,
     validate,
-    getAllDepts,
     getAllUsers,
+    getUsersOutOfWork,
+    getAllDepts,
     createDepartment,
+    updateDepartment,
+    deleteDepartment,
     getDeptsPerCompany,
     getInfosLoggedUser,
+    hireUser,
+    dismissUser,
 }

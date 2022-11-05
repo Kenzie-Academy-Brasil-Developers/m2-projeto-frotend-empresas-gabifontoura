@@ -4,6 +4,12 @@
 
 }
 
+.title-2{
+    font-size: var(--font-size-0-0);
+    font-weight: 700;
+
+}
+
 .text-1-bold{
     font-size: var(--font-size-0);
     font-weight: 700;
@@ -14,3 +20,7 @@
     font-weight: 400;
 }
 
+.text-delete{
+    text-align: center;
+    padding: 2rem 6rem;
+}
