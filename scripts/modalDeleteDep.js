@@ -32,7 +32,9 @@ function modalDeleteDepartament(department) {
     h4title.innerText = `Realmente deseja deletar o departamento ${department.name} e demitir seus funcionários?`
 
     btnConfirmar.innerText = 'Confirmar'
+    console.log(department)
     console.log(department.uuid)
+
     btnConfirmar.addEventListener('click', async (event) => {
         console.log("hi")
         event.preventDefault()

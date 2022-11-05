@@ -119,117 +119,117 @@ renderCardsDepts()
 
 
 
-async function selectFilterDeptsPerCompany(){
+// async function selectFilterDeptsPerCompany(){
 
-    const departments = await getAllDepts()
+//     const departments = await getAllDepts()
 
-    // console.log(departments)
+//     // console.log(departments)
     
     
-    const select = document.querySelector(".select-companies-admin")
+//     const select = document.querySelector(".select-companies-admin")
 
     
-    const departmentsList = await getDeptsPerCompany(select.options[select.selectedIndex].value)
-    // console.log(select.value)
+//     const departmentsList = await getDeptsPerCompany(select.options[select.selectedIndex].value)
+//     // console.log(select.value)
     
-    // console.log(departmentsList)
+//     // console.log(departmentsList)
  
-    select.addEventListener('change', () => {
-        const ul = document.querySelector(".card-list")
+//     select.addEventListener('change', () => {
+//         const ul = document.querySelector(".card-list")
     
-        ul.innerText = ""
+//         ul.innerText = ""
 
-        if(select.name == 'Selecionar empresa'){
+//         if(select.name == 'Selecionar empresa'){
 
           
-        departments.forEach(element => {
+//         departments.forEach(element => {
             
 
-            createCardDepts(element)
-        });
+//             createCardDepts(element)
+//         });
 
-        }
+//         }
 
-        else{
+//         else{
 
-            departments.forEach(element => {
-
-
-            console.log(select.options[select.selectedIndex].value)
-
-            createCardDeptsFiltro(element,select.options[select.selectedIndex].name)
-        });
-
-        }
+//             departments.forEach(element => {
 
 
-    })
+//             console.log(select.options[select.selectedIndex].value)
+
+//             createCardDeptsFiltro(element,select.options[select.selectedIndex].name)
+//         });
+
+//         }
+
+
+//     })
 
 
 
-}
-selectFilterDeptsPerCompany()
+// }
+// selectFilterDeptsPerCompany()
 
-function  createCardDeptsFiltro(element,company_name){
+// function  createCardDeptsFiltro(element,company_name){
 
 
-    const ul = document.querySelector(".card-list")
+//     const ul = document.querySelector(".card-list")
 
-    ul.innerText = ""
+//     ul.innerText = ""
 
-    const li = document.createElement("li")
-    const h3name = document.createElement("h3")
-    const h4description = document.createElement("h4")
-    const h5companyName = document.createElement("h5")
+//     const li = document.createElement("li")
+//     const h3name = document.createElement("h3")
+//     const h4description = document.createElement("h4")
+//     const h5companyName = document.createElement("h5")
 
-    const div = document.createElement("div")
-    const btnEye = document.createElement("button")
-    const iconEye = document.createElement("img")
+//     const div = document.createElement("div")
+//     const btnEye = document.createElement("button")
+//     const iconEye = document.createElement("img")
 
-    const btnPencil = document.createElement("button")
-    const iconPencil = document.createElement("img")
+//     const btnPencil = document.createElement("button")
+//     const iconPencil = document.createElement("img")
 
-    const btnTrash = document.createElement("button")
-    const iconTrash = document.createElement("img")
+//     const btnTrash = document.createElement("button")
+//     const iconTrash = document.createElement("img")
 
-    li.classList = 'card flex column gap-05rem'
-    h3name.classList = 'text-1-bold'
-    h4description.classList = 'text-2'
-    h5companyName.classList = 'text-2'
+//     li.classList = 'card flex column gap-05rem'
+//     h3name.classList = 'text-1-bold'
+//     h4description.classList = 'text-2'
+//     h5companyName.classList = 'text-2'
 
-    div.classList = 'icons flex'
-    btnEye.classList = 'clean-btn'
-    btnPencil.classList = 'clean-btn'
-    btnTrash.classList = 'clean-btn'
+//     div.classList = 'icons flex'
+//     btnEye.classList = 'clean-btn'
+//     btnPencil.classList = 'clean-btn'
+//     btnTrash.classList = 'clean-btn'
 
-    iconEye.src = "../../assets/eye.svg"
-    iconPencil.src = "../../assets/pencil_black.svg"
-    iconTrash.src = "../../assets/trash.svg"
+//     iconEye.src = "../../assets/eye.svg"
+//     iconPencil.src = "../../assets/pencil_black.svg"
+//     iconTrash.src = "../../assets/trash.svg"
 
-    h3name.innerText = element.name
-    h4description.innerText = element.description
-    h5companyName.innerText = company_name
-    btnEye.addEventListener('click', () => {
+//     h3name.innerText = element.name
+//     h4description.innerText = element.description
+//     h5companyName.innerText = company_name
+//     btnEye.addEventListener('click', () => {
        
-        renderModalDepDetails(element)
-    })
-    btnPencil.addEventListener('click', () => {
+//         renderModalDepDetails(element)
+//     })
+//     btnPencil.addEventListener('click', () => {
        
-        renderModalUpdateDep(element)
-    })
-    btnTrash.addEventListener('click', () => {
+//         renderModalUpdateDep(element)
+//     })
+//     btnTrash.addEventListener('click', () => {
 
-        renderModalDeleteDep(element) 
-    })
+//         renderModalDeleteDep(element) 
+//     })
 
-    btnEye.append(iconEye)
-    btnPencil.append(iconPencil)
-    btnTrash.append(iconTrash)
+//     btnEye.append(iconEye)
+//     btnPencil.append(iconPencil)
+//     btnTrash.append(iconTrash)
 
-    div.append(btnEye, btnPencil, btnTrash)
-    li.append(h3name, h4description, h5companyName, div)
-    ul.append(li)
-}
+//     div.append(btnEye, btnPencil, btnTrash)
+//     li.append(h3name, h4description, h5companyName, div)
+//     ul.append(li)
+// }
 
 
 async function renderOptionsSelectAdmin() {

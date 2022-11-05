@@ -383,7 +383,7 @@ async function createDepartment(body) {
 
     try {
       const request = await fetch(baseUrl + "/departments/" + id, {
-        method: "PATCH",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
