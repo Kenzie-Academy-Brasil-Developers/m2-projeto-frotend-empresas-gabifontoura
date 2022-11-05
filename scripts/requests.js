@@ -402,6 +402,55 @@ async function createDepartment(body) {
   }
 
 
+  
+  async function updateUser(id,body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/admin/update_user/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+  async function deleteUser(id) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/admin/delete_user/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 async function getInfosLoggedUser (){
 
     const token = getLocalStorageToken();
@@ -476,6 +525,8 @@ export{
     createDepartment,
     updateDepartment,
     deleteDepartment,
+    updateUser,
+    deleteUser,
     getDeptsPerCompany,
     getInfosLoggedUser,
     hireUser,

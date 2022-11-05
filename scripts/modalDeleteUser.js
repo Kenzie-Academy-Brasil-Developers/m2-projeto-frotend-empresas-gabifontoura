@@ -1,11 +1,8 @@
-import { renderCardsDepts } from "../pages/admin/index.js"
-import { deleteDepartment } from "./requests.js"
-import { renderCardsUsers} from "../pages/admin/index.js"
+import { renderCardsUsers } from "../pages/admin/index.js"
+import { deleteUser } from "../scripts/requests.js"
 
 
-
-
-function modalDeleteDepartament(department) {
+function modalDeleteUser(user) {
 
 
     const bgmodal = document.createElement("section")
@@ -31,18 +28,18 @@ function modalDeleteDepartament(department) {
     btnCloseModal.addEventListener('click',() => {
         bgmodal.remove()
     })
-    h4title.innerText = `Realmente deseja deletar o departamento ${department.name} e demitir seus funcionários?`
+    h4title.innerText = `Realmente deseja remover o usuário ${user.username}?`
 
-    btnConfirmar.innerText = 'Confirmar'
+    btnConfirmar.innerText = 'Deletar'
 
 
     btnConfirmar.addEventListener('click', async (event) => {
-        console.log("hi")
+    
         event.preventDefault()
 
-        await deleteDepartment(department.uuid)
-        await renderCardsDepts()
-        renderCardsUsers()
+        await deleteUser(user.uuid)
+        await renderCardsUsers()
+   
         
         bgmodal.remove()
         
@@ -60,16 +57,16 @@ function modalDeleteDepartament(department) {
 }
 
 
-function renderModalDeleteDep(department) {
+function renderModalDeleteUser(user) {
 
     const mainContainer = document.querySelector(".container")
 
-    const modal = modalDeleteDepartament(department)
+    const modal = modalDeleteUser(user)
     mainContainer.append(modal)
 }
 
 
 export {
-    renderModalDeleteDep,
+    renderModalDeleteUser,
     
 }
