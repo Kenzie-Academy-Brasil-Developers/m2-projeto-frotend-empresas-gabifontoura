@@ -383,7 +383,7 @@ async function createDepartment(body) {
 
     try {
       const request = await fetch(baseUrl + "/departments/" + id, {
-        method: "PATCH",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -402,6 +402,56 @@ async function createDepartment(body) {
   }
 
 
+  
+  async function updateUser(id,body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/admin/update_user/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+  async function deleteUser(id) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/admin/delete_user/" + id, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 async function getInfosLoggedUser (){
 
     const token = getLocalStorageToken();
@@ -416,7 +466,7 @@ async function getInfosLoggedUser (){
         })
 
         const response = await request.json()
-
+     
         return response
 
     }catch(err){
@@ -424,6 +474,31 @@ async function getInfosLoggedUser (){
     }
 
 }
+
+
+async function updateMyOwnProfile(body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/users" , {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 async function getCoworkers (){
 
@@ -476,8 +551,11 @@ export{
     createDepartment,
     updateDepartment,
     deleteDepartment,
-    getDeptsPerCompany,
-    getInfosLoggedUser,
     hireUser,
     dismissUser,
+    updateUser,
+    deleteUser,
+    getDeptsPerCompany,
+    getInfosLoggedUser,
+    updateMyOwnProfile,
 }

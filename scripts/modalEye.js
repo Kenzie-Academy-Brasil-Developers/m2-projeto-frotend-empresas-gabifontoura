@@ -1,4 +1,5 @@
 import { getUsersOutOfWork, hireUser, getAllUsers, dismissUser } from "./requests.js"
+import { renderCardsUsers} from "../pages/admin/index.js"
 
 
 function modalDepartmentDetails(department) {
@@ -28,8 +29,8 @@ function modalDepartmentDetails(department) {
     bgmodal.classList = 'modal-wrapper'
     modal.classList = 'modal-eye flex column'
     divHeader.classList = 'flex between modal-header padding-r-2rem'
-    h2name.classList = 'title'
-    btnCloseModal.classList = 'text-1-bold clean-btn'
+    h2name.classList = 'title padding-up-down-1rem'
+    btnCloseModal.classList = 'text-1-bold clean-btn align-start'
 
     main.classList = 'flex between'
 
@@ -56,7 +57,8 @@ function modalDepartmentDetails(department) {
         hire(department.uuid, select)
         renderHiredUsers(department)
         updateHiredUsers(department)
-        renderUsersSelectModalEye()
+        renderCardsUsers()
+        
 
 
     })
@@ -169,6 +171,7 @@ async function renderHiredUsers(department) {
                 updateHiredUsers(department)
                 dismissUser(user.uuid)
                 renderUsersSelectModalEye()
+                renderCardsUsers()
 
             })
 

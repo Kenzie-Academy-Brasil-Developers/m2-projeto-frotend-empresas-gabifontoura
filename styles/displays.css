@@ -32,13 +32,17 @@
     flex-wrap: wrap;
 }
 
-
+.align-start{
+    align-self: flex-start;
+}
 
 .padding-r-2rem{
     padding-right: 2rem;
 }
 
-
+.padding-up-down-1rem{
+    padding: 1rem 0;
+}
 
 
 .gap-05rem{

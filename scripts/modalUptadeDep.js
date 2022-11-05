@@ -25,8 +25,8 @@ function modalUpdateDepartament(department) {
     bgmodal.classList = 'modal-wrapper'
     modal.classList = 'modal flex column'
     divHeader.classList = 'flex between modal-header'
-    h4title.classList = 'title'
-    btnCloseModal.classList = 'text-1-bold clean-btn'
+    h4title.classList = 'title padding-up-down-1rem'
+    btnCloseModal.classList = 'text-1-bold clean-btn align-start'
     form.classList = 'flex column gap-1rem'
     
     inputDescription.classList = 'input-textarea'
