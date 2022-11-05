@@ -451,6 +451,7 @@ async function createDepartment(body) {
       console.log(err);
     }
   }
+
 async function getInfosLoggedUser (){
 
     const token = getLocalStorageToken();
@@ -465,7 +466,7 @@ async function getInfosLoggedUser (){
         })
 
         const response = await request.json()
-
+     
         return response
 
     }catch(err){
@@ -473,6 +474,31 @@ async function getInfosLoggedUser (){
     }
 
 }
+
+
+async function updateMyOwnProfile(body) {
+
+    const token = getLocalStorageToken();
+
+    try {
+      const request = await fetch(baseUrl + "/users" , {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+       
+      });
+  
+      const response = await request.json();
+      console.log(response)
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 async function getCoworkers (){
 
@@ -525,10 +551,11 @@ export{
     createDepartment,
     updateDepartment,
     deleteDepartment,
+    hireUser,
+    dismissUser,
     updateUser,
     deleteUser,
     getDeptsPerCompany,
     getInfosLoggedUser,
-    hireUser,
-    dismissUser,
+    updateMyOwnProfile,
 }
