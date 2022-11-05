@@ -47,6 +47,19 @@
    
 }
 
+.btn-green-max{
+    color: var(--white);
+    background-color: var(--color-success);
+    border: none;
+    height: 2.5rem ;
+    width: 60%;
+    padding: 0 2rem;
+    font-size: var(--font-size-1);
+    font-weight: 700;
+    align-self: center;
+    margin-bottom: 2rem;
+}
+
 
 
 .btn-outline-rad{

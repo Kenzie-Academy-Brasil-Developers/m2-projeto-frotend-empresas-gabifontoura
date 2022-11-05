@@ -185,7 +185,10 @@ async function register(body) {
 
 
 
-async function getAllDepts(token){
+async function getAllDepts(){
+
+    const token = getLocalStorageToken();
+
     try{
         const request = await fetch (baseUrl + "/departments",{
             method: "GET",
@@ -303,9 +306,12 @@ async function dismissUser(idUser) {
     }
   }
 
-async function getDeptsPerCompany(token,company_uuid) {
+async function getDeptsPerCompany(company_id) {
+
+    const token = getLocalStorageToken();
+
     try{
-        const request = await fetch (baseUrl + "/departments" + `/${company_uuid}` ,{
+        const request = await fetch (baseUrl + "/departments/" + company_id,{
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -314,8 +320,7 @@ async function getDeptsPerCompany(token,company_uuid) {
         })
 
         const response = await request.json()
-        console.log(response)
-
+       
         return response
 
     }catch(err){
@@ -348,12 +353,12 @@ async function createDepartment(body) {
   }
 
 
-  async function updateDepartment(uuid,body) {
+  async function updateDepartment(id,body) {
 
     const token = getLocalStorageToken();
 
     try {
-      const request = await fetch(baseUrl + "/departments" + `/${uuid}`, {
+      const request = await fetch(baseUrl + "/departments" + `/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -372,9 +377,34 @@ async function createDepartment(body) {
     }
   }
 
+  async function deleteDepartment(id) {
 
-async function getInfosLoggedUser (token){
+    const token = getLocalStorageToken();
 
+    try {
+      const request = await fetch(baseUrl + "/departments/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        
+       
+      });
+  
+      const response = await request.json();
+      
+      return response;
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+async function getInfosLoggedUser (){
+
+    const token = getLocalStorageToken();
        
     try{
         const request = await fetch (baseUrl + "/users/profile",{
@@ -387,7 +417,6 @@ async function getInfosLoggedUser (token){
 
         const response = await request.json()
 
-        console.log(response)
         return response
 
     }catch(err){
@@ -446,6 +475,7 @@ export{
     getAllDepts,
     createDepartment,
     updateDepartment,
+    deleteDepartment,
     getDeptsPerCompany,
     getInfosLoggedUser,
     hireUser,

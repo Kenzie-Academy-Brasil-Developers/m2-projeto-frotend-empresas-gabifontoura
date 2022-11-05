@@ -133,8 +133,6 @@ async function renderHiredUsers(department) {
 
     const users = await getAllUsers()
 
-    console.log(users)
-
 
     const ul = document.querySelector(".users-eye-list")
 
@@ -168,6 +166,7 @@ async function renderHiredUsers(department) {
             btnDesligar.innerText = 'Desligar'
             btnDesligar.addEventListener('click', () => {
                 updateHiredUsers(department)
+                updateHiredUsers(department)
                 dismissUser(user.uuid)
                 renderUsersSelectModalEye()
 
@@ -189,8 +188,7 @@ async function renderHiredUsers(department) {
 
 function updateHiredUsers(department) {
     
-    renderHiredUsers(department)
-    
+    renderHiredUsers(department) 
 
 }
 

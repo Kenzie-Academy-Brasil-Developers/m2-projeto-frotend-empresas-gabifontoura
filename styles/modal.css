@@ -38,6 +38,19 @@
 
 }
 
+.modal-delete{
+    background-color: var(--white);
+    width: 45rem;
+    height: max-content;
+    padding: 2rem;
+    color:var(--black);
+    position: relative;
+    margin: 1rem;
+    align-self: center;
+    gap: 1rem;
+
+}
+
 .users-eye-list{
     width: 100%;
     height: max-content;
