@@ -1,5 +1,5 @@
 import { getUsersOutOfWork, hireUser, getAllUsers, dismissUser } from "./requests.js"
-import { renderCardsUsers} from "../pages/admin/index.js"
+import { renderCardsUsers } from "../pages/admin/index.js"
 
 
 function modalDepartmentDetails(department) {
@@ -55,10 +55,12 @@ function modalDepartmentDetails(department) {
     btnContratar.addEventListener('click', (event) => {
         event.preventDefault()
         hire(department.uuid, select)
+        renderUsersSelectModalEye()
+        renderUsersSelectModalEye()
         renderHiredUsers(department)
         updateHiredUsers(department)
         renderCardsUsers()
-        
+
 
 
     })
@@ -171,6 +173,7 @@ async function renderHiredUsers(department) {
                 updateHiredUsers(department)
                 dismissUser(user.uuid)
                 renderUsersSelectModalEye()
+                renderUsersSelectModalEye()
                 renderCardsUsers()
 
             })
@@ -190,8 +193,8 @@ async function renderHiredUsers(department) {
 
 
 function updateHiredUsers(department) {
-    
-    renderHiredUsers(department) 
+
+    renderHiredUsers(department)
 
 }
 
