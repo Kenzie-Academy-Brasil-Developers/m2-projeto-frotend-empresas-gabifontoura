@@ -65,9 +65,10 @@ async function createCoworkers(idCompany) {
             div.classList = 'header-company-dept flex align-center'
             h2CompanyName.classList = 'company-name title-2'
             h3DeptName.classList = 'title-2'
+            span.classList = 'span-'
 
             h3DeptName.innerText = department.name
-            span.innerText = ' ' + '-' + ' '
+            span.innerText = '-'
             h2CompanyName.innerText = idCompany.name
 
             div.append(h2CompanyName, span, h3DeptName)
