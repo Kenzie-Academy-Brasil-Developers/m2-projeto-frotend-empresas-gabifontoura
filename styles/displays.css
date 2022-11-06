@@ -5,6 +5,10 @@
 .display-none{
     display: none;
 }
+
+.display-block{
+    display: block;
+}
 .end{
     justify-content: end;
 }
@@ -42,6 +46,10 @@
 
 .padding-up-down-1rem{
     padding: 1rem 0;
+}
+
+.padding-up-down-12rem{
+    padding: 12rem 0;
 }
 
 

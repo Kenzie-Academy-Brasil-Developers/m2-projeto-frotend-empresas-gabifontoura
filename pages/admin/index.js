@@ -314,67 +314,67 @@ async function createCardUsers(element) {
             btnTrash.addEventListener('click', () => {
                 renderModalDeleteUser(element)
             })
-            
+
             btnPencil.append(iconPencil)
             btnTrash.append(iconTrash)
             div.append(btnPencil, btnTrash)
             li.append(h3name, h4description, h5companyName, div)
             ul.append(li)
-            
+
         }
     })
 
-        if(element.department_uuid == null){
+    if (element.department_uuid == null) {
 
-                const ul = document.querySelector(".users-list")
-    
-                const li = document.createElement("li")
-                const h3name = document.createElement("h3")
-                const h4description = document.createElement("h4")
-                const h5companyName = document.createElement("h5")
-    
-    
-                const div = document.createElement("div")
-    
-                const btnPencil = document.createElement("button")
-                const iconPencil = document.createElement("img")
-    
-                const btnTrash = document.createElement("button")
-                const iconTrash = document.createElement("img")
-    
-                li.classList = 'card flex column gap-05rem'
-                h3name.classList = 'text-1-bold'
-                h4description.classList = 'text-2'
-                h5companyName.classList = 'text-2'
-    
-                div.classList = 'icons flex'
-    
-                btnPencil.classList = 'clean-btn'
-                btnTrash.classList = 'clean-btn'
-    
-                iconPencil.src = "../../assets/pencil_black.svg"
-                iconTrash.src = "../../assets/trash.svg"
-    
-                h3name.innerText = element.username
-                h4description.innerText = element.professional_level
-                h5companyName.innerText = "Disponível"
-    
-                btnPencil.addEventListener('click', () => {
-    
-                    renderModalUpdateUser(element)
-                })
-    
-                btnTrash.addEventListener('click', () => {
-                    renderModalDeleteUser(element)
-                })
-    
-                btnPencil.append(iconPencil)
-                btnTrash.append(iconTrash)
-                div.append(btnPencil, btnTrash)
-                li.append(h3name, h4description, h5companyName, div)
-                ul.append(li)
-        }
-        
+        const ul = document.querySelector(".users-list")
+
+        const li = document.createElement("li")
+        const h3name = document.createElement("h3")
+        const h4description = document.createElement("h4")
+        const h5companyName = document.createElement("h5")
+
+
+        const div = document.createElement("div")
+
+        const btnPencil = document.createElement("button")
+        const iconPencil = document.createElement("img")
+
+        const btnTrash = document.createElement("button")
+        const iconTrash = document.createElement("img")
+
+        li.classList = 'card flex column gap-05rem'
+        h3name.classList = 'text-1-bold'
+        h4description.classList = 'text-2'
+        h5companyName.classList = 'text-2'
+
+        div.classList = 'icons flex'
+
+        btnPencil.classList = 'clean-btn'
+        btnTrash.classList = 'clean-btn'
+
+        iconPencil.src = "../../assets/pencil_black.svg"
+        iconTrash.src = "../../assets/trash.svg"
+
+        h3name.innerText = element.username
+        h4description.innerText = element.professional_level
+        h5companyName.innerText = "Disponível"
+
+        btnPencil.addEventListener('click', () => {
+
+            renderModalUpdateUser(element)
+        })
+
+        btnTrash.addEventListener('click', () => {
+            renderModalDeleteUser(element)
+        })
+
+        btnPencil.append(iconPencil)
+        btnTrash.append(iconTrash)
+        div.append(btnPencil, btnTrash)
+        li.append(h3name, h4description, h5companyName, div)
+        ul.append(li)
+    }
+
 
 }
 

@@ -291,11 +291,8 @@ async function hireUser(body) {
 
         const response = await request.json();
 
-        if(response.ok){
-            toast("Funcionário Contratado", "")
-
             return response;
-        }
+     
 
 
     } catch (err) {
@@ -537,7 +534,6 @@ async function getCoworkers() {
 
         const response = await request.json()
 
-        console.log(response)
         return response
 
     } catch (err) {
@@ -579,4 +575,5 @@ export {
     getDeptsPerCompany,
     getInfosLoggedUser,
     updateMyOwnProfile,
+    getCoworkers,
 }

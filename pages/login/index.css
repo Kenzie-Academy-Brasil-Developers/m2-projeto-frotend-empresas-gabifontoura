@@ -3,20 +3,22 @@
 @media (min-width: 799px){
     
     .content{
+        display: flex;
         background-image: url("../../assets/fullbgphoto.svg");
         width: 100vw;
         height: 100vh;
-        align-content: center;
-
-
+        justify-content: center;
+    
     }
 
     form{
     
         width: 30rem ;
+        height: max-content;
         background-color: var(--grey-1);
         padding: 3rem;
-        margin: 8rem 30rem;
+        align-self: center;
+
     
     }
 }
