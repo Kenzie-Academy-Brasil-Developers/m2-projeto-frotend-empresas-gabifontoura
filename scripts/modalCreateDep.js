@@ -65,6 +65,7 @@ function modalCreateDepartment() {
 
         await createDepartment(newDepartament)
         await renderCardsDepts()
+        
         bgmodal.remove()
     })
 

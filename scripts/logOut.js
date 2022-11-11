@@ -8,7 +8,7 @@ export function logOut() {
     btnLogOut.addEventListener("click", () => {
 
         localStorage.removeItem("@KenzieEmpresas:token")
-        localStorage.removeItem("@KenzieEmpresas:tipoUsuario")
+
         window.location.replace("/pages/home/index.html")
     })
 
